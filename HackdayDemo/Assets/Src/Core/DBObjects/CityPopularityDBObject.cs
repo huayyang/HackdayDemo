@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mono.Data.Sqlite;
 
-public class CityPopularityDBObject : MonoBehaviour {
+public class CityPopularityDBObject {
+	public int cityId;
 	public string cityName;
 	public float latitude;
 	public float longitude;
 	public string[] trackList;
 
 	public CityPopularityDBObject(SqliteDataReader reader) {
-		cityName = reader.GetString(0);
-		latitude = reader.GetFloat(1);
-		longitude = reader.GetFloat(2);
-		trackList = reader.GetString(3).Split(',');
+		cityId = reader.GetInt32(0);
+		cityName = reader.GetString(1);
+		latitude = reader.GetFloat(2);
+		longitude = reader.GetFloat(3);
+		trackList = reader.GetString(4).Split(',');
 	}
 }
